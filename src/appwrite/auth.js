@@ -42,9 +42,9 @@ export class Authservice {
              return await this.account.get(); 
         }
         catch(err){
-            throw new Error('Failed to get current user')
+            return null;
         }
-        return null;
+        
     }
     async LogoutAccount(){
         try{
