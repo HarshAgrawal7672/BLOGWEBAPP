@@ -6,10 +6,11 @@ export default function Protected({children, authentication = true}) {
 
     const navigate = useNavigate()
     const [loader, setLoader] = useState(true)
-    const authStatus = useSelector(state => state.auth.status)
+    const authStatus = useSelector(state => state.auth.Status)
 
     useEffect(() => {
-        //TODO: make it more easy to understand
+        console.log('Loading') 
+        console.log('Auth status:', authStatus);
 
         // if (authStatus ===true){
         //     navigate("/")
@@ -18,10 +19,11 @@ export default function Protected({children, authentication = true}) {
         // }
         
         //let authValue = authStatus === true ? true : false
+        if (authStatus === undefined) return;
 
-        if(authentication && authStatus !== authentication){
+        if(authentication && !authStatus ){
             navigate("/login")
-        } else if(!authentication && authStatus !== authentication){
+        } else if(!authentication && authStatus ){
             navigate("/")
         }
         setLoader(false)

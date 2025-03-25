@@ -3,7 +3,8 @@ const conf={
     appwriteprojectid:String(import.meta.env.VITE_APPWRITE_PROJECT_ID),
     appwritedatabaseid:String(import.meta.env.VITE_APPWRITE_DATABASE_ID),
     appwritecollectionid:String(import.meta.env.VITE_APPWRITE_COLLECTION_ID),
-    appwritebucketid:String(import.meta.env.VITE_APPWRITE_BUCKET_ID)
+    appwritebucketid:String(import.meta.env.VITE_APPWRITE_BUCKET_ID),
+    tinymceapikey:String(import.meta.env.VITE_TINYMCE_API_KEY)
     
 }
 

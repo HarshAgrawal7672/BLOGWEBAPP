@@ -7,22 +7,28 @@ import {useDispatch} from 'react-redux'
 import {useForm} from 'react-hook-form'
 
 function Signup() {
+    
     const navigate = useNavigate()
     const [error, setError] = useState("")
     const dispatch = useDispatch()
     const {register, handleSubmit} = useForm()
 
-    const create = async(data) => {
-        setError("")
+    const create = async (data) => {
+        
+        console.log("Signup button clicked"); // ✅ Confirm if the button is clicked
+        setError("");
         try {
-            const userData = await authService.CreateAccount(data)
+            const userData = await authService.CreateAccount(data);
+            console.log("Account created:", userData); // ✅ Confirm account creation
             if (userData) {
-                const userData = await authService.getCurrentuser()
-                if(userData) dispatch(login(userData));
-                navigate("/")
+                const userData = await authService.getCurrentuser();
+                console.log("User Data:", userData); // ✅ Confirm user data fetch
+                if (userData) dispatch(login(userData));
+                navigate("/");
             }
         } catch (error) {
-            setError(error.message)
+            console.error("Signup error:", error.message); // ✅ Show error in console
+            setError(error.message);
         }
     }
 
