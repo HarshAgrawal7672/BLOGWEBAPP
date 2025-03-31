@@ -18,10 +18,10 @@ function Signup() {
         console.log("Signup button clicked"); // ✅ Confirm if the button is clicked
         setError("");
         try {
-            const userData = authService.CreateAccount(data);
+            const userData = await authService.CreateAccount(data);
             console.log("Account created:", userData); // ✅ Confirm account creation
             if (userData) {
-                const userData = authService.getCurrentuser();
+                const userData = await authService.getCurrentuser();
                 console.log("User Data:", userData); // ✅ Confirm user data fetch
                 if (userData) dispatch(login(userData));
                 navigate("/");

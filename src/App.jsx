@@ -18,7 +18,7 @@ function App() {
     .then((userData) => {
         console.log("✅ User data:", userData);  // ✅ Improved log
         if (userData) {
-            dispatch(login({ userData }));
+            dispatch(login( userData ));
         } else {
             console.log("🚪 No session found — user is logged out."); // ✅ Added log
             dispatch(logout());

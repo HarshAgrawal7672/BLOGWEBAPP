@@ -21,10 +21,13 @@ export class Authservice {
         password,
         name
       );
+       // ✅ Add this line
       if (userAccount) {
         await this.LoginAccount({ email, password });
-      } else {
+        console.log("User created:", userAccount);
         return userAccount;
+      } else {
+        return null;
       }
     } catch (error) {
       throw new Error(error.message);
