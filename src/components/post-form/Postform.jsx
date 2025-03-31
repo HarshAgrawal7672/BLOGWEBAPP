@@ -24,10 +24,7 @@ function Postform({post}) {
         if(post){
            const file= data.image[0]?await appwriteservice.uploadfile(data.image[0]) : null;
            
-           if(post.userid !==user.userData.$id){
-             alert("You can't edit others' posts.")
-             return;
-           }
+           
 
            if(file){
            await appwriteservice.deletefile(post.featureimage)
@@ -46,8 +43,8 @@ function Postform({post}) {
         if (file) {
             const fileId = file.$id;
             data.featureimage = fileId;
-            console.log(`user id:${user.userData.$id}`)
-            const dbPost =  appwriteservice.createPost({ ...data, userid: user.userData.$id});
+            console.log(`user id:${user.$id}`)
+            const dbPost = await appwriteservice.createPost({ ...data, userid: user.$id});
 
             if (dbPost) {
                 navigate(`/post/${dbPost.$id}`);
